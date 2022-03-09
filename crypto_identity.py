@@ -208,10 +208,24 @@ address = PublicKey.from_point(public_key).address(net='test', compressed=True)
 # print(lol_address)
 
 
-print("Our first Bitcoin identity:")
-print("1. secret key: ", secret_key)
-print("2. public key: ", (public_key.x, public_key.y))
-print("3. Bitcoin address: ", address)
+# print("Our first Bitcoin identity:")
+# print("1. secret key: ", secret_key)
+# print("2. public key: ", (public_key.x, public_key.y))
+# print("3. Bitcoin address: ", address)
+
+
+secret_key2 = int.from_bytes(b"Andrej's Super Secret 2nd Wallet", 'big') # or just random.randrange(1, bitcoin_gen.n)
+assert 1 <= secret_key2 < bitcoin_gen.n # check it's valid
+public_key2 = secret_key2 * G
+address2 = PublicKey.from_point(public_key2).address(net='test', compressed=True)
+
+print("Our second Bitcoin identity:")
+print("1. secret key: ", secret_key2)
+print("2. public key: ", (public_key2.x, public_key2.y))
+print("3. Bitcoin address: ", address2)
+
+
+
 
 
 
